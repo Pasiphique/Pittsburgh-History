@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import Map from './Map/Map.jsx'
+import FunFacts from './Pages/FunFacts.jsx'
+import Home from './Pages/Home.jsx'
+import PittsburghTimeline from './Pages/PittsburghTimeline.jsx'
+import { Routes, Route, Link } from 'react-router-dom';
+import { useState } from 'react';
+import './styles/App.css'
+const App = () => {
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  const [menuActive, setMenuActive] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuActive(!menuActive);
+  };
+
+    return(
+     <div>
+        <nav className="navbar">
+        <div className="navbar-container">
+          <Link to="/" className="navbar-logo">Pittsburgh</Link>
+          <ul className={`navbar-menu ${menuActive ? 'active' : ''}`}>
+            <li>
+              <Link to="/" className="navbar-link">Home</Link>
+            </li>
+            <li>
+              <Link to="/map" className="navbar-link">Pittsburgh Map</Link>
+            </li>
+            <li>
+              <Link to="/timeline" className="navbar-link">Pittsburgh Timeline</Link>
+            </li>
+            <li>
+              <Link to='facts' className='navbar-link'>Fun Facts</Link>
+            </li>
+          </ul>
+          <div className="navbar-toggle"  onClick={toggleMenu}>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
+        </div>
+      </nav>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/timeline" element={<PittsburghTimeline />} />
+          <Route path='/facts' element={<FunFacts />} />
+        </Routes>
+     </div>
+    )
 }
-
-export default App
+export default App;
