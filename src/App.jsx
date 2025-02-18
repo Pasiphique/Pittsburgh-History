@@ -28,10 +28,10 @@ const App = () => {
                   <Link to="/" className="navbar-link">Home</Link>
                 </li>
                 <li>
-                  <Link to="/map" className="navbar-link">Pittsburgh Map</Link>
+                  <Link to="/map" className="navbar-link">Map</Link>
                 </li>
                 <li>
-                  <Link to="/timeline" className="navbar-link">Pittsburgh Timeline</Link>
+                  <Link to="/timeline" className="navbar-link">Timeline</Link>
                 </li>
                 <li>
                   <Link to="/facts" className="navbar-link">Fun Facts</Link>
